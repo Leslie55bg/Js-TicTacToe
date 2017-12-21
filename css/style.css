@@ -29,7 +29,6 @@ margin-top: 7px;
 #case {
   height: 120px;
   width: 120px;
-  border-radius: 0;
   border: 2px solid black;
   box-shadow: 2px 2px 2px black;
   background-color: rgba(white, 0.79);
@@ -37,4 +36,25 @@ margin-top: 7px;
   text-align: center;
   font-family: bkobiii;
   color: rgba(241, 164, 71, 0.79);
+}
+
+.player_1 {
+  background-color: rgba(254, 214, 6, 0.79);
+}
+
+.player_1:active {
+  background-image: url(../img/citron.png);
+  width: 120px;
+  height: 120px;
+  transition-duration: 
+}
+
+.player_2 {
+  background-color: rgba(245, 60, 34, 0.79);
+}
+
+.player_2:active {
+  background-image: url(../img/framb.png);
+  width: 120px;
+  height: 120px;
 }
