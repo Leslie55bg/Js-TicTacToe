@@ -8,31 +8,47 @@
   <body>
     <header>
       <h1>JEU DU MORPION - Tic Tac Toe</h1>
-      <h3>PLAYER 1  -  vs  - PLAYER 2</h3>
+      <h3>joueur1: CITRON  -<span>- VS -</span>-  joueur2: FRAMBOISE</h3>
     </header>
 
     <div id="game">
       <table>
         <tr>
-          <th id="case" onclick="player_1" ></th>
-          <!--onclick="javascript:visibilite('id_cacher_1')-->
-          <th id="case">O</th>
-          <th id="case">X</th>
+          <td id="case0" onclick="play(0)" style="cursor: pointer"></td>
+          <td id="case1" onclick="play(1)" style="cursor: pointer"></td>
+          <td id="case2" onclick="play(2)" style="cursor: pointer"></td>
         </tr>
         <tr>
-          <td id="case"></td>
-          <td id="case"></td>
-          <td id="case"></td>
+          <td id="case3" onclick="play(3)" style="cursor: pointer" ></td>
+          <td id="case4" onclick="play(4)" style="cursor: pointer"></td>
+          <td id="case5" onclick="play(5)" style="cursor: pointer"></td>
         </tr>
         <tr>
-          <td id="case"></td>
-          <td id="case"></td>
-          <td id="case"></td>
+          <td id="case6" onclick="play(6)" style="cursor: pointer"></td>
+          <td id="case7" onclick="play(7)" style="cursor: pointer"></td>
+          <td id="case8" onclick="play(8)" style="cursor: pointer"></td>
         </tr>
       </table>
     </div>
 
-    <script type="text/javascript" src="../js/script.js"></script>
+
+
+    <div id="citron" style="cursor: pointer">
+      <h2>WINNER = CITRON !</h2>
+      <img class="citron" src="img/citron.png" alt="" >
+      <p></p>
+    </div>
+    <div id="framboise" style="cursor: pointer">
+      <h2>WINNER = FRAMBOISE !</h2>
+      <img class="framboise" src="img/framb.png" alt="">
+      <p></p>
+    </div>
+
+    <div class="Reset" style="cursor: pointer">
+      <input id="TryAgain" type="reset" onclick="TryAgain" name="TryAgain" style="cursor: pointer" value="TRY   AGAIN  ?">
+    </div>
+
+    <script type="text/javascript" src="js/script.js"></script>
 
   </body>
 </html>
