@@ -1,94 +1,100 @@
 var player= 1;
-var player1 = "1";
-var player2 = "2";
+var player1c = "1";
+var player2f = "2";
 
-function play(numeroCase) {    //******la fonction placement joueurs alternés
-  if (player==1) {    // SI joueur 1 (rappel variable) joue :
-    document.getElementById('case'+numeroCase).classList.add("player1") ;    // il a accès direct à Id case de son choix, (=onclick HTML)
-    player = 2;  // puis ce sera au tour du joueur 2                         // et place son image pré-destinée grace à : (.classlist.add qui est un rappel balise vers CSS)
-  }                                                                          //;  afficher image du joueur suivant !?
-  else if (player==2) {  //SINON, SI joueur 2 (rappel variable) joue :
-    document.getElementById('case'+numeroCase).classList.add("player2");  // il a accès direct à Id case de son choix, (=onclick HTML)
-    player = 1;  // puis ce sera au tour du joueur 1                      // et place son image pré-destinée grace à :
-  }                                                                      // (.classlist.add qui est un rappel balise vers CSS)
+//********************FONCTION PLACEMENT JOUEURS ALTERNES ******************
 
-document.getElementById('case'+numeroCase).onclick= function(play) {   //blocage onclick = impossible de changer (retour faux)
-    return false
-  };
-}  // fermeture de la fonction play
+function play(numeroCase) {
+  if (player==1) {                                                            // SI joueur 1 (rappel variable) joue :
+    document.getElementById('case'+numeroCase).classList.add("player1c");      // il a accès direct à Id case de son choix, (=onclick HTML)
+    player = 2;
+    victoire();                                                              // et place son image pré-destinée grace à : (.classlist.add qui est un rappel balise vers CSS)
+  }
 
+  else if (player==2) {                                                 //SINON, SI joueur 2 (rappel variable) joue :
+    document.getElementById('case'+numeroCase).classList.add("player2f");
+    player = 1;
+    victoire();
+  }                                                                        // et place son image pré-destinée grace à :
+                                                                          // (.classlist.add qui est un rappel balise vers CSS)
+  document.getElementById('case'+numeroCase).onclick = function(play) {   //blocage onclick = impossible de changer (retour faux)
+    return (false);
+  }
+}
 
+//********************FONCTION VICTOIRE & AFFICHE du GAGNANTS + bouton reset ******************
+function victoire () {
 
+ var win1 = false;
+
+  if (document.getElementById('case0').className == "player1c" && document.getElementById('case1').className == "player1c" && document.getElementById('case2').className == "player1c" ){
+    win1 = true;
+  }
+  else if (document.getElementById('case0').className == "player1c" && document.getElementById('case4').className == "player1c" && document.getElementById('case8').className == "player1c"){
+    win1 = true;
+  }
+  else if (document.getElementById('case0').className == "player1c" && document.getElementById('case3').className == "player1c" && document.getElementById('case6').className == "player1c"){
+    win1 = true;
+  }
+  else if (document.getElementById('case1').className == "player1c" && document.getElementById('case4').className == "player1c" && document.getElementById('case7').className == "player1c"){
+    win1 = true;
+  }
+  else if (document.getElementById('case3').className == "player1c" && document.getElementById('case4').className == "player1c" && document.getElementById('case5').className == "player1c"){
+    win1 = true;
+  }
+  else if (document.getElementById('case2').className == "player1c" && document.getElementById('case4').className == "player1c" && document.getElementById('case6').className == "player1c"){
+    win1 = true;
+  }
+  else if (document.getElementById('case2').className == "player1c" && document.getElementById('case5').className == "player1c" && document.getElementById('case8').className == "player1c"){
+    win1 = true;
+  }
+  if (win1 == true) {
+    document.getElementById("affichcitron").style.visibility ="visible";   //en CSS "affichcitron" est noté visibily:hidden / ici on le rappelle en visible si win TRUE
+    document.getElementById("TryA").style.visibility = "visible";
+  }
+
+var win2 = false;
+
+ if (document.getElementById('case0').className == "player2f" && document.getElementById('case1').className == "player2f" && document.getElementById('case2').className == "player2f"){
+   win2 = true;
+ }
+ else if (document.getElementById('case0').className == "player2f" && document.getElementById('case4').className == "player2f" && document.getElementById('case8').className == "player2f"){
+   win2 = true;
+ }
+ else if (document.getElementById('case0').className == "player2f" && document.getElementById('case3').className == "player2f" && document.getElementById('case6').className == "player2f"){
+   win2 = true;
+ }
+ else if (document.getElementById('case1').className == "player2f" && document.getElementById('case4').className == "player2f" && document.getElementById('case7').className == "player2f"){
+   win2 = true;
+ }
+ else if (document.getElementById('case3').className == "player2f" && document.getElementById('case4').className == "player2f" && document.getElementById('case5').className == "player2f"){
+   win2 = true;
+ }
+ else if (document.getElementById('case2').className == "player2f" && document.getElementById('case4').className == "player2f" && document.getElementById('case6').className == "player2f"){
+   win2 = true;
+ }
+ else if (document.getElementById('case2').className == "player2f" && document.getElementById('case5').className == "player2f" && document.getElementById('case8').className == "player2f"){
+   win2 = true;
+ }
+ if (win2 == true) {
+   document.getElementById("affichframboise").style.visibility ="visible";
+   document.getElementById('TryA').style.visibility = "visible";
+ }
+}
+
+/********************FONCTION RESET ******************/
 /*
-function victoire('case'+numeroCase){  //*****La fonction victoire permet de savoir qui a gagne ou perdu.
+function resetButton() {
+var matchNull = true;
 
-  var player= 1;
-  var player1 = "1";
-  var player2 = "2";
+if (win1 == TRUE) {
 
-  var game = {       // table de jeu à zero - case vide
-    case[0] =".";
-    case[1] =".";
-    case[2] =".";
-    case[3] =".";
-    case[4] =".";
-    case[5] =".";
-    case[6] =".";
-    case[7] =".";
-    case[8] =".";
-  }
-
-  var combinaison_victoire = ('case'+numeroCase) == player && ('case'+numeroCase) == player && ('case'+numeroCase) == player && ;
-
-  if(true){
-    var player = player1;
-
-    (case[0] == player && case [4] == player && game[8] == player) // repère case4 = centre , comparer les lignes de victoires (pour les 2 joueurs)
-    (case[2] == player && case[4] == player && game[6] == player)
-    (case[1] == player && case[4] == player && game[7] == player)
-    (case[3] == player && case[4] == player && game[5] == player)
-
-    return (player2);
-  }
-
-  else (true){
-    var player = player2;
-
-    (case[0] == player && case [1] == player && game[2] == player)
-    (case[0] == player && case[4] == player && game[8] == player)
-    (case[0] == player && case[3] == player && game[6] == player)
-
-    return (player1);
-  }
-
-  return (false); //Et ainsi de suite jusqu'a ce qu'il y ai un gagnant ou une égalité
-}
-*/
-
-
-
-
-/********
-var player1= document.getElementsByTagName("case0");
-player1[0].innerHTML représente le contenu de la case 0 de votre tableau.  // Vous avez de 0 à 8 éléments dans le tableau
-*********/
-
-
-
-
-
-/********************affiche  qui gagne******************
-var winner = "";
-
-var winner = player1
-var winner= player2
-var null = false
-
-if winner(player1) == true {
-  alert document.getElementById("citron");
 }
 
-else if winner (player2) == true {
-  document.getElementById("framboise");
+if (win2 == TRUE)
+
+match null false
+
 }
+
 */
